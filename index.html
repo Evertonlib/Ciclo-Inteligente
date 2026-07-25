@@ -3,36 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulário de Treino</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Sistema Ritmo Certo — Ciclo Inteligente</title>
   <style>
+    /* ── Fontes locais (sem CDN) ── */
+    @font-face { font-family: "Bebas Neue"; src: url("fonts/bebas-neue-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Inter"; src: url("fonts/inter-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Inter"; src: url("fonts/inter-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Inter"; src: url("fonts/inter-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Inter"; src: url("fonts/inter-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: "IBM Plex Mono"; src: url("fonts/ibm-plex-mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "IBM Plex Mono"; src: url("fonts/ibm-plex-mono-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+
     :root {
-      --bg: #09090B;
-      --surface: #111113;
-      --surface-hover: #18181B;
-      --border: rgba(255, 255, 255, 0.07);
-      --border-strong: rgba(255, 255, 255, 0.13);
-      --text: #FAFAFA;
-      --text-muted: #71717A;
-      --title: #3F3F46;
-      --accent: #22C55E;
-      --accent-dark: #16A34A;
-      --accent-soft: rgba(34, 197, 94, 0.09);
-      --accent-glow: rgba(34, 197, 94, 0.22);
+      --bg: #14171b;
+      --surface: #1c2025;
+      --surface-hover: #282d33;
+      --border: rgba(243, 241, 234, 0.10);
+      --border-strong: rgba(243, 241, 234, 0.18);
+      --text: #f3f1ea;
+      --text-muted: rgba(243, 241, 234, 0.70);
+      --title: rgba(243, 241, 234, 0.45);
+      --accent: #d6482e;
+      --accent-dark: #b83a24;
+      --accent-soft: rgba(214, 72, 46, 0.10);
+      --accent-glow: rgba(214, 72, 46, 0.22);
       --radius: 16px;
       --radius-sm: 10px;
+      --fonte-display: "Bebas Neue", sans-serif;
+      --fonte-sans: "Inter", sans-serif;
+      --fonte-mono: "IBM Plex Mono", ui-monospace, monospace;
     }
 
     * { box-sizing: border-box; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
 
     html, body {
       margin: 0;
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: var(--fonte-sans);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -54,8 +77,9 @@
       gap: 8px;
       margin: 0 0 18px;
       color: var(--accent);
+      font-family: var(--fonte-mono);
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
@@ -72,10 +96,11 @@
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2rem, 5.5vw, 2.9rem);
-      font-weight: 800;
+      font-family: var(--fonte-display);
+      font-size: clamp(2.4rem, 6.5vw, 3.4rem);
+      font-weight: 400;
       line-height: 1.06;
-      letter-spacing: -0.04em;
+      letter-spacing: 0.01em;
       color: var(--text);
     }
 
@@ -110,14 +135,16 @@
       align-items: center;
       gap: 9px;
       margin: 0 0 20px;
-      color: var(--title);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.11em;
+      color: var(--text);
+      font-family: var(--fonte-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
-    .section-heading .emoji { font-size: 0.95rem; }
+    .section-heading .emoji { font-size: 1.05rem; }
 
     .fields-grid {
       display: grid;
@@ -167,13 +194,13 @@
     .select-input:focus,
     .textarea-input:focus {
       outline: none;
-      border-color: rgba(34, 197, 94, 0.4);
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.08);
+      border-color: rgba(214, 72, 46, 0.4);
+      box-shadow: 0 0 0 3px rgba(214, 72, 46, 0.08);
     }
 
     .select-input {
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2352525B' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23767d87' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 13px center;
       padding-right: 36px;
@@ -181,8 +208,8 @@
     }
 
     .select-input option {
-      background: #18181B;
-      color: #FAFAFA;
+      background: #1c2025;
+      color: #f3f1ea;
     }
 
     /* ── Choice pills ── */
@@ -239,14 +266,14 @@
     }
 
     .choice-input:checked + .choice-pill {
-      border-color: rgba(34, 197, 94, 0.5);
+      border-color: rgba(214, 72, 46, 0.5);
       background: var(--accent-soft);
       color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.12) inset;
+      box-shadow: 0 0 0 1px rgba(214, 72, 46, 0.12) inset;
     }
 
     .choice-input:focus-visible + .choice-pill {
-      outline: 2px solid rgba(34, 197, 94, 0.35);
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
 
@@ -257,17 +284,18 @@
       border: 0;
       border-radius: var(--radius-sm);
       background: var(--accent);
-      color: #000;
-      font: inherit;
+      color: var(--bg);
+      font-family: var(--fonte-mono);
       font-size: 0.92rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       cursor: pointer;
       transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
     }
 
     .submit-button:hover {
-      background: #4ADE80;
+      background: var(--accent-dark);
       transform: translateY(-1px);
       box-shadow: 0 10px 28px var(--accent-glow);
     }
@@ -278,7 +306,7 @@
     }
 
     .submit-button:focus-visible {
-      outline: 2px solid rgba(34, 197, 94, 0.5);
+      outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
 
@@ -310,9 +338,9 @@
 <body>
   <main class="page">
     <header class="hero">
-      <p class="hero-kicker">Coleta de Dados</p>
-      <h1>Formulário para ciclo de treino de corrida</h1>
-      <p>Preencha os dados abaixo, gere o PDF e envie o arquivo ao coach com tudo organizado em um único documento.</p>
+      <p class="hero-kicker">Ciclo Inteligente</p>
+      <h1>Sistema Ritmo Certo</h1>
+      <p>Formulário para montar seu ciclo de treino de corrida. Preencha os dados abaixo, gere o PDF e envie o arquivo ao coach com tudo organizado em um único documento.</p>
     </header>
 
     <form id="training-form" class="form-layout" novalidate>
@@ -645,9 +673,17 @@
 
         doc.setFont("helvetica", "bold");
         doc.setFontSize(16);
-        y = addWrappedText(doc, "Formulário de Treino — " + raceName, sideMargin, y, maxWidth, 7);
+        doc.setTextColor(20, 23, 27);
+        y = addWrappedText(doc, "SISTEMA RITMO CERTO", sideMargin, y, maxWidth, 7);
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(11);
+        doc.setTextColor(118, 125, 135);
+        y = addWrappedText(doc, "Ciclo Inteligente · " + raceName, sideMargin, y, maxWidth, 5.5);
+
         y += 2;
-        doc.setDrawColor(215, 221, 216);
+        doc.setDrawColor(214, 72, 46);
+        doc.setLineWidth(0.6);
         doc.line(sideMargin, y, pageWidth - sideMargin, y);
         y += 8;
 
